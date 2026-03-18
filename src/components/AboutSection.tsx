@@ -45,10 +45,12 @@ export const AboutSection = ({ profile }: AboutSectionProps) => {
                 </div>
 
                 {/* Phone Number */}
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                  <span className="text-lg">📞</span>
-                  <span className="text-sm">13924221113</span>
-                </div>
+                {profile.phone && (
+                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <span className="text-lg">📞</span>
+                    <span className="text-sm">{profile.phone}</span>
+                  </div>
+                )}
 
                 {/* Social Links */}
                 <div className="flex flex-wrap gap-3">

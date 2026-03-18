@@ -50,4 +50,5 @@ export interface UserProfile {
   };
   gender?: string; // 性别
   age?: number; // 年龄
+  phone?: string; // 电话号码
 }
