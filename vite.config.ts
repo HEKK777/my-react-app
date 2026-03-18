@@ -50,8 +50,12 @@ export default defineConfig({
   server: {
     // 开发服务器配置
     port: 5173,
-    strictPort: false,
+    strictPort: false, // 如果端口被占用，自动尝试下一个可用端口
     host: true,
+    // 防止端口占用错误
+    watch: {
+      usePolling: true,
+    },
   },
   build: {
     // 构建配置

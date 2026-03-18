@@ -5,7 +5,10 @@
       "Bash(ss:*)",
       "Bash(git init:*)",
       "Bash(git branch:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(lsof:*)",
+      "Bash(git remote add:*)"
     ]
   }
 }
