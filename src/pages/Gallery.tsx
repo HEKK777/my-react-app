@@ -4,14 +4,29 @@ import { Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
+/**
+ * 作品筛选类型
+ */
 type FilterType = 'all' | 'image' | 'video';
 
+/**
+ * 作品画廊页面
+ *
+ * 展示所有 AI 创作作品，支持按类型筛选：
+ * - 全部作品
+ * - 仅图片作品
+ * - 仅视频作品
+ *
+ * @returns 画廊页面组件
+ */
 export const Gallery = () => {
+  // 当前激活的筛选器
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
   // 应用排序：图片在前，视频在后，各自按ID数字排序
   const sortedArtworks = sortArtworks(mockArtworks);
 
+  // 筛选器配置
   const filters: { type: FilterType; label: string }[] = [
     { type: 'all', label: '全部作品' },
     { type: 'image', label: '图片作品' },
@@ -21,7 +36,7 @@ export const Gallery = () => {
   return (
     <div className="min-h-screen pt-24 pb-16 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* 页面头部 */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-4">
             <Filter className="w-8 h-8 text-gray-900 dark:text-gray-100" />
@@ -32,7 +47,7 @@ export const Gallery = () => {
           </p>
         </div>
 
-        {/* Filter Buttons */}
+        {/* 筛选按钮组 */}
         <div className="flex justify-center gap-3 mb-12">
           {filters.map((filter) => (
             <Button
@@ -50,7 +65,7 @@ export const Gallery = () => {
           ))}
         </div>
 
-        {/* Gallery Grid */}
+        {/* 作品网格展示 */}
         <GalleryGrid artworks={sortedArtworks} type={activeFilter} />
       </div>
     </div>

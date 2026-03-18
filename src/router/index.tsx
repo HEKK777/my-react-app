@@ -8,7 +8,12 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
 /**
- * 布局组件 - 包含导航栏和页脚
+ * 布局组件
+ *
+ * 为所有页面提供统一的导航栏和页脚布局
+ *
+ * @param children - 子组件（页面内容）
+ * @returns 包含导航栏、页面内容和页脚的完整布局
  */
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,7 +27,11 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 /**
  * 404 页面组件
- * 当访问不存在的路由时显示
+ *
+ * 当用户访问不存在的路由时显示的页面
+ * 提供返回首页的链接
+ *
+ * @returns 404 错误页面 UI
  */
 const NotFound = () => {
   return (
@@ -45,17 +54,25 @@ const NotFound = () => {
       </div>
     </div>
   );
-}
+};
 
 /**
- * 路由配置
- * 使用 HashRouter（hash 模式）
- * 路由路径格式：/#/gallery, #/videos 等
+ * 应用路由配置
+ *
+ * 使用 Hash 模式路由，适合静态部署（GitHub Pages、CDN 等）
+ *
+ * 路由路径格式：
+ * - 首页：/#/ 或 /#/
+ * - 作品画廊：/#/gallery
+ * - 视频作品：/#/videos
+ * - 关于我：/#/about
  *
  * Hash 模式的优点：
  * - 不需要服务器配置，可以在任何路径下部署
  * - URL 中的 hash 部分不会发送到服务器
  * - 适合静态部署和 CDN 部署
+ *
+ * @returns React Router 配置对象
  */
 export const router = createHashRouter([
   {
