@@ -8,7 +8,23 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(lsof:*)",
-      "Bash(git remote add:*)"
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git config:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(ssh-keygen:*)",
+      "Bash(ssh-keyscan:*)",
+      "Bash(~/.ssh/known_hosts)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run build:*)",
+      "Bash(git -c http.sslVerify=false push)",
+      "Bash(npm install:*)",
+      "Bash(vercel login:*)",
+      "Bash(cat:*)",
+      "Bash(curl:*)",
+      "Bash(tar:*)",
+      "Bash(pnpm run build:*)"
     ]
   }
 }
