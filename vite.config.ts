@@ -5,8 +5,8 @@ import appdevDesignMode from '@xagi/vite-plugin-design-mode';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // 设置基础路径，确保静态资源能正确加载
-  base: '/',
+  // 使用相对路径，确保在 GitHub Pages 等子路径部署时资源能正确加载
+  base: './',
   plugins: [
     
   // <!-- DEV-INJECT-START -->
