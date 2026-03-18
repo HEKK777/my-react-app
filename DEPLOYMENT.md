@@ -149,3 +149,7 @@ A: 免费版提供：
 4. 获得公网链接分享给他人
 
 部署完成后，你会获得一个类似 `https://react-vite-app.vercel.app` 的链接，可以在任何设备上访问！
+
+# GitHub Pages 部署说明
+构建时间: Thu Mar 19 04:56:18 CST 2026
+
