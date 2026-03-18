@@ -1,3 +1,4 @@
+import React from 'react';
 import { createHashRouter, Link } from 'react-router-dom';
 import { Home } from '@/pages/Home';
 import { Gallery } from '@/pages/Gallery';
@@ -23,7 +24,7 @@ function Layout({ children }: { children: React.ReactNode }) {
  * 404 页面组件
  * 当访问不存在的路由时显示
  */
-function NotFound() {
+const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center max-w-md">
