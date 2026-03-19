@@ -193,7 +193,7 @@ export const mockArtworks: Artwork[] = [
   {
     id: 'image-5',
     title: '崩坏：星穹铁道卡芙卡Lora训练',
-    description: '基于Flux.1基础模型为基底，训练的崩坏：星穹铁道卡芙卡Lora模型，在以Flux.1为大模型使用下配合该Lora可直接生成的卡芙卡外貌风格，不需过多的解释词描述，效果优良',
+    description: '基于Flux.1基础模型为基底，训练的崩坏：星穹铁道卡芙卡角色形象Lora模型，在以Flux.1为大模型使用下配合该Lora可直接生成的卡芙卡外貌风格，不需过多的提示词描述，效果优良',
     type: 'image',
     images: [
       {
@@ -377,7 +377,7 @@ export const mockArtworks: Artwork[] = [
   {
     id: 'video-3',
     title: '樱花狐妖IP设计',
-    description: '使用即梦平台Agent生成了一个IP形象，并生产它的三视图、多种动作，表情、多种服饰参考图和相关周边产品图,然后使用Seedance2.0首帧率生成产品周边动态视频',
+    description: '使用即梦平台Agent生成了一个IP形象，并生产它的三视图、多种动作，表情、多种服饰参考图和相关周边产品图,然后使用Seedance2.0首尾帧生成产品周边动态视频',
     type: 'video',
     url: 'https://vdapqfpvimuynuebchuz.supabase.co/storage/v1/object/sign/HEKK/6b9a06435e3cef3fd1c423f0c661aae6_raw%20(1).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80Y2M3MjVmNi1iZmQ2LTRmMWYtOTU3ZS1iZGQyOTZiMGUxZDEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJIRUtLLzZiOWEwNjQzNWUzY2VmM2ZkMWM0MjNmMGM2NjFhYWU2X3JhdyAoMSkubXA0IiwiaWF0IjoxNzczODI2MTc0LCJleHAiOjE4MDUzNjIxNzR9.0qVNHHJIJa9dSNEy9Q2MJmAp_QeIhtaGRaSwkc4quaI',
     thumbnail: 'https://i.ibb.co/6JctpDK6/image.png',
