@@ -5,7 +5,6 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Play, Eye, ChevronLeft, ChevronRight, ImageOff, Film, Image as ImageIcon, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface GalleryGridProps {
   artworks: Artwork[];
@@ -42,6 +41,8 @@ export const GalleryGrid = ({ artworks, type }: GalleryGridProps) => {
   const [viewMode, setViewMode] = useState<'video' | 'images' | 'storyboard'>('video');
   // 卡芙拉作品集的特殊状态
   const [kafkaDisplayMode, setKafkaDisplayMode] = useState<'generation' | 'training'>('generation');
+  // 提示词弹窗状态
+  const [promptDialogOpen, setPromptDialogOpen] = useState(false);
 
   const filteredArtworks = artworks.filter(artwork =>
     type === 'all' ? true : artwork.type === type
@@ -117,8 +118,7 @@ export const GalleryGrid = ({ artworks, type }: GalleryGridProps) => {
   };
 
   return (
-    <TooltipProvider>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredArtworks.map((artwork) => {
           const mainImage = getMainImage(artwork);
           const artworkImages = getArtworkImages(artwork);
@@ -363,24 +363,30 @@ export const GalleryGrid = ({ artworks, type }: GalleryGridProps) => {
                               className="max-w-full max-h-full object-contain"
                               onError={() => handleImageError(artworkImages[currentImageIndex]?.url)}
                             />
-                            {/* 提示词悬停显示 - 右下角 */}
+                            {/* 提示词显示 - 右下角 */}
                             {(artworkImages[currentImageIndex]?.prompt || artwork.prompt) && (
                               <div className="absolute bottom-2 right-2 z-10">
-                                <Tooltip>
-                                  <TooltipTrigger asChild>
-                                    <div className="bg-white dark:bg-gray-900 rounded-full p-1.5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shadow-lg">
+                                <Dialog open={promptDialogOpen} onOpenChange={setPromptDialogOpen}>
+                                  <DialogTrigger asChild>
+                                    <button
+                                      className="bg-white dark:bg-gray-900 rounded-full p-1.5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shadow-lg"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setPromptDialogOpen(true);
+                                      }}
+                                    >
                                       <Eye className="w-4 h-4 text-gray-900 dark:text-gray-100" />
-                                    </div>
-                                  </TooltipTrigger>
-                                  <TooltipContent side="left" className="max-w-md bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-900 dark:text-gray-100">
-                                    <div className="text-sm">
-                                      <div className="font-semibold mb-2">生成提示词:</div>
-                                      <div className="whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
+                                    </button>
+                                  </DialogTrigger>
+                                  <DialogContent className="max-w-lg w-[95vw] bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800">
+                                    <DialogTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">生成提示词</DialogTitle>
+                                    <DialogDescription asChild>
+                                      <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap break-words max-h-[60vh] overflow-y-auto leading-relaxed">
                                         {artworkImages[currentImageIndex]?.prompt || artwork.prompt}
                                       </div>
-                                    </div>
-                                  </TooltipContent>
-                                </Tooltip>
+                                    </DialogDescription>
+                                  </DialogContent>
+                                </Dialog>
                               </div>
                             )}
                             {/* 图片计数器 */}
@@ -564,21 +570,27 @@ export const GalleryGrid = ({ artworks, type }: GalleryGridProps) => {
                               {/* Prompt indicator on image */}
                               {(artworkImages[currentImageIndex]?.prompt || artwork.prompt) && (
                                 <div className="absolute bottom-2 right-2 z-10">
-                                  <Tooltip>
-                                    <TooltipTrigger asChild>
-                                      <div className="bg-white dark:bg-gray-900 rounded-full p-1.5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shadow-lg">
+                                  <Dialog open={promptDialogOpen} onOpenChange={setPromptDialogOpen}>
+                                    <DialogTrigger asChild>
+                                      <button
+                                        className="bg-white dark:bg-gray-900 rounded-full p-1.5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shadow-lg"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setPromptDialogOpen(true);
+                                        }}
+                                      >
                                         <Eye className="w-4 h-4 text-gray-900 dark:text-gray-100" />
-                                      </div>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="left" className="max-w-md bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-900 dark:text-gray-100">
-                                      <div className="text-sm">
-                                        <div className="font-semibold mb-2">生成提示词:</div>
-                                        <div className="whitespace-pre-wrap break-words max-h-60 overflow-y-auto">
+                                      </button>
+                                    </DialogTrigger>
+                                    <DialogContent className="max-w-lg w-[95vw] bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800">
+                                      <DialogTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">生成提示词</DialogTitle>
+                                      <DialogDescription asChild>
+                                        <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap break-words max-h-[60vh] overflow-y-auto leading-relaxed">
                                           {artworkImages[currentImageIndex]?.prompt || artwork.prompt}
                                         </div>
-                                      </div>
-                                    </TooltipContent>
-                                  </Tooltip>
+                                      </DialogDescription>
+                                    </DialogContent>
+                                  </Dialog>
                                 </div>
                               )}
                               {/* Image counter */}
@@ -666,6 +678,5 @@ export const GalleryGrid = ({ artworks, type }: GalleryGridProps) => {
           );
         })}
       </div>
-    </TooltipProvider>
-  );
-};
+    );
+  };

@@ -25,7 +25,12 @@
       "Bash(curl:*)",
       "Bash(tar:*)",
       "Bash(pnpm run build:*)",
-      "Bash(git -c http.sslVerify=false push:*)"
+      "Bash(git -c http.sslVerify=false push:*)",
+      "Bash(git -c http.sslVerify=false remote -v origin)",
+      "Bash(git -c http.sslVerify=false remote show origin)",
+      "Bash(pnpm type-check:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm build:*)"
     ]
   }
 }
