@@ -1,7 +1,7 @@
 import { UserProfile } from '@/types';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, Github } from 'lucide-react';
+import { Mail, Github, MessageCircle } from 'lucide-react';
 
 interface AboutSectionProps {
   profile: UserProfile;
@@ -46,9 +46,16 @@ export const AboutSection = ({ profile }: AboutSectionProps) => {
 
                 {/* Phone Number */}
                 {profile.phone && (
-                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                    <span className="text-lg">📞</span>
-                    <span className="text-sm">{profile.phone}</span>
+                  <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center gap-1.5">
+                      <MessageCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      <span className="text-sm">WeChat</span>
+                    </div>
+                    <span className="text-gray-300 dark:text-gray-600">|</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-lg">📞</span>
+                      <span className="text-sm">{profile.phone}</span>
+                    </div>
                   </div>
                 )}
 
